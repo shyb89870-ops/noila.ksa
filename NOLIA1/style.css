@@ -1,0 +1,564 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --cream: #e7ddca;
+  --dark: #15130f;
+  --gold: #b69a68;
+  --white: #f8f5ee;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--cream);
+  color: var(--dark);
+  font-family: "Cairo", sans-serif;
+  overflow-x: hidden;
+}
+
+.loader {
+  position: fixed;
+  inset: 0;
+  background: var(--dark);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: loader 1.5s forwards;
+}
+
+.loader span {
+  color: var(--cream);
+  font-family: "Playfair Display";
+  font-size: 90px;
+}
+
+@keyframes loader {
+  0%, 70% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 90px;
+  padding: 0 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+  background: rgba(231,221,202,.75);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(3, 29, 4, 0.719);
+}
+
+.logo {
+  font-family: "Playfair Display";
+  font-size: 27px;
+  letter-spacing: 6px;
+}
+
+.logo span {
+  font-size: 13px;
+  margin-left: 8px;
+}
+
+nav {
+  display: flex;
+  gap: 35px;
+}
+
+nav a {
+  color: var(--dark);
+  text-decoration: none;
+  font-size: 13px;
+  transition: .3s;
+}
+
+nav a:hover {
+  color: var(--gold);
+}
+
+.menu {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 25px;
+}
+
+.hero {
+  min-height: 100vh;
+  padding: 140px 8% 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+}
+
+.hero-content {
+  width: 50%;
+  animation: reveal 1.2s ease;
+}
+
+.mini-logo {
+  font-size: 12px;
+  letter-spacing: 7px;
+  margin-bottom: 25px;
+  color: var(--gold);
+}
+
+h1 {
+  font-family: "Playfair Display";
+  font-size: clamp(20px, 7vw, 40px);
+  line-height: 1.05;
+  font-weight: 400;
+}
+
+h1 span,
+h2 i {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.hero-content p {
+  max-width: 500px;
+  margin: 30px 0;
+  line-height: 2;
+  color: #020101;
+}
+
+.buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.btn {
+  padding: 15px 35px;
+  text-decoration: none;
+  transition: .4s;
+}
+
+.primary {
+  background: var(--dark);
+  color: white;
+}
+
+.primary:hover {
+  background: var(--gold);
+}
+
+.secondary {
+  border: 1px solid var(--dark);
+  color: var(--dark);
+}
+
+.secondary:hover {
+  background: var(--dark);
+  color: white;
+}
+
+.hero-image {
+  width: 45%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-circle {
+  width: min(500px, 42vw);
+  height: min(500px, 42vw);
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--dark);
+  padding: 10px;
+  animation: floating 5s infinite ease-in-out;
+}
+
+.image-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.circle-text {
+  position: absolute;
+  width: 570px;
+  height: 570px;
+  max-width: 48vw;
+  max-height: 48vw;
+  border-radius: 50%;
+  animation: rotate 25s linear infinite;
+  pointer-events: none;
+}
+
+.circle-text span {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-align: center;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes floating {
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.about,
+.services,
+.gallery,
+.contact {
+  padding: 140px 8%;
+}
+
+.about {
+  display: flex;
+  justify-content: space-between;
+  gap: 80px;
+  background: #f00707;
+  color: white;
+}
+
+.section-title span {
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--gold);
+}
+
+.section-title h2 {
+  font-family: "Playfair Display";
+  font-size: clamp(45px, 5vw, 75px);
+  font-weight: 400;
+  line-height: 1.1;
+  margin-top: 20px;
+}
+
+.about-text {
+  max-width: 500px;
+  line-height: 2.2;
+  color: #bcb5a8;
+}
+
+.about-text p + p {
+  margin-top: 25px;
+}
+
+.center {
+  text-align: center;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 25px;
+  margin-top: 70px;
+}
+
+.card {
+  position: relative;
+  padding: 50px 35px;
+  min-height: 300px;
+  border: 1px solid rgba(0, 0, 0, 0.959);
+  transition: .5s;
+}
+
+.card:hover {
+  transform: translateY(-15px);
+  background: var(--dark);
+  color: white;
+}
+
+.number {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  color: var(--gold);
+}
+
+.icon {
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+
+.card h3 {
+  font-family: "Playfair Display";
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.card p {
+  color: #777064;
+  line-height: 1.8;
+}
+
+.card:hover p {
+  color: #bdb6a8;
+}
+
+.gallery {
+  background: #f4efe5;
+}
+
+.gallery-grid {
+  margin-top: 70px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 300px 300px;
+  gap: 20px;
+}
+
+.gallery-item {
+  overflow: hidden;
+}
+
+.gallery-item.large {
+  grid-row: span 2;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: .8s;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.08);
+}
+
+.contact {
+  background: var(--dark);
+  color: white;
+  text-align: center;
+}
+
+.contact-box {
+  max-width: 800px;
+  margin: auto;
+}
+
+.contact-box > span {
+  color: var(--gold);
+  letter-spacing: 4px;
+  font-size: 11px;
+}
+
+.contact h2 {
+  font-family: "Playfair Display";
+  font-size: clamp(50px, 7vw, 90px);
+  font-weight: 400;
+  margin: 25px 0;
+}
+
+.contact p {
+  color: #aaa398;
+  margin-bottom: 40px;
+}
+
+.contact-btn {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 20px;
+  border: 1px solid var(--gold);
+  color: rgb(240, 237, 237);
+  text-decoration: none;
+  transition: .4s;
+}
+
+.contact-btn:hover {
+  background: var(--gold);
+}
+
+footer {
+  background: #000000;
+  color: rgb(255, 17, 17);
+  padding: 70px 8% 30px;
+  text-align: center;
+}
+
+.footer-logo {
+  font-family: "Playfair Display";
+  font-size: 45px;
+  letter-spacing: 12px;
+}
+
+footer p {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #777;
+  margin: 25px 0 60px;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  color: #666;
+  font-size: 11px;
+}
+
+/* Mobile */
+
+@media (max-width: 800px) {
+
+  header {
+    height: 75px;
+    padding: 0 6%;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .menu {
+    display: block;
+  }
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 130px;
+  }
+
+  .hero-content,
+  .hero-image {
+    width: 100%;
+  }
+
+  .hero-content p {
+    margin: 25px auto;
+  }
+
+  .buttons {
+    justify-content: center;
+  }
+
+  .image-circle {
+    width: 75vw;
+    height: 75vw;
+  }
+
+  .circle-text {
+    width: 82vw;
+    height: 82vw;
+    max-width: none;
+    max-height: none;
+  }
+
+  .about {
+    flex-direction: column;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 300px 300px 300px;
+  }
+
+  .gallery-item.large {
+    grid-row: auto;
+  }
+
+  .about,
+  .services,
+  .gallery,
+  .contact {
+    padding: 90px 6%;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+footer {
+    margin-top: 80px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+.socials {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 40px;
+}
+
+.socials a {
+    display: block;
+
+    width: 320px;
+
+    margin: auto;
+
+    padding: 20px;
+
+    text-align: center;
+
+    text-decoration: none;
+
+    color: white;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    border-radius: 20px;
+
+    transition: 0.3s;
+}
+
+.socials a:hover {
+    transform: translateY(-5px);
+
+    background: rgba(255, 255, 255, 0.12);
+}
+.bg-video {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    z-index: -1;
+}
